@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap');
+.Navbar{
+    display:flex;
+    align-items: center;
+    list-style: none;
+    width: 100%;
+    // background-color: aquamarine;
+    justify-content: space-between;
+    padding:0;
+    .navbar_icons{
+        width:40px;
+        height:40px;
+        border-radius: 50%;
+    }
+    .routes{
+       .list{
+        list-style:none;
+        display:flex;
+        gap:4rem;
+        .item{
+            font-family: 'Courier New', Courier, monospace;
+            cursor: pointer;
+        }
+       }
+    }
+    .signup_login{
+        .signup_login_list{
+            display:flex;
+            align-items: center;
+            gap:1rem;
+            padding:0;
+            list-style: none;
+        }
+    }
+}

@@ -1,0 +1,10 @@
+.ToggleSwitch{
+    display:flex;
+    align-items: center;
+    gap:0;
+    .label{
+        width: fit-content;
+        padding: 0;
+        margin: 0;
+    }
+}

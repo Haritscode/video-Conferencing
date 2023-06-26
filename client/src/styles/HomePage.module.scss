@@ -1,0 +1,118 @@
+@keyframes leftside {
+    0% {
+        left:-100%;
+        opacity: 0;
+    }
+    25%{
+        opacity:0;
+    }
+    100%{
+        left:-10%;
+        opacity: 1;
+    }
+}
+@keyframes rightside{
+    0%{
+        right:-100%;
+        opacity:0;
+    }
+    25%{
+        opacity: 0;
+    }
+    100%{
+        right:0;
+        opacity: 1;
+    }
+}
+@keyframes createMeetingButtons{
+    0%{
+        left:-100%;
+        opacity: 0;
+    }
+    25%{
+        opacity:0;
+    }
+    100%{
+        left:-1%;
+        opacity:1;
+    }
+}
+.HomePage{
+    height:100vh;
+    display:flex;
+    justify-content: space-evenly;
+    .HomePage_left{
+        display:flex;
+        flex-direction: column;
+        gap:4rem;
+        width:40%;
+        height:80%;
+        align-items: end;
+        justify-content: center;
+        .thumbnail{
+            width:375px;
+            height: fit-content;
+            display:flex;
+            position: relative;
+            left:-10%;
+            animation-name: leftside;
+            animation-duration: 3s;
+            .thumbnail_body{
+                width:fit-content;
+                padding: 0;
+                font-size: 4.5rem;
+                font-family: 'EB Garamond', serif;
+                font-weight: 500;
+                margin:0;
+                .color_changer{
+                    color:orange;
+                    position: relative;
+                    .image{
+                        position: absolute;
+                        width:6rem;
+                        height:6rem;
+                    }
+                }
+            }
+        }
+        .thumbnail_text{
+            width: 375px;
+            font-family: 'EB Garamond', serif;
+            font-size: 1.2rem;
+            font-weight: 500;
+            left:-10%;
+            position:relative;
+            animation-name: leftside;
+            animation-duration: 3s;
+        }
+        .createMeetings{
+            display:flex;
+            width: 60%;
+            gap:1rem;
+            position: relative;
+            left:-1%;
+            animation: createMeetingButtons 3s;
+            .newmeetingpopup{
+                position: absolute;
+                z-index: 999;
+                width:100vw;
+                height:100vh;
+            }
+        }
+    }
+    .HomePage_right{
+        width: 50%;
+        height:80%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .template_image{
+            position: relative;
+            width: 800px;
+            height:600px;
+            right:0;
+            animation-name: rightside;
+            animation-duration:3s;
+        }
+    }
+}

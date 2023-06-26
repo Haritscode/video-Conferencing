@@ -1,0 +1,171 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;1,300;1,700&family=Playfair:ital,wght@0,400;0,700;1,400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
+@mixin error_msg{
+  padding:0;
+  margin: 0;
+  color:red;
+  font-family: "Lato", sans-serif;
+}
+.signup {
+  display: flex;
+  width: 100vw;
+  position: relative;
+  .loading{
+    width: 100%;
+    height:100%;
+    position: absolute;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    backdrop-filter: blur(2px);
+    color: #009FFF;
+  }
+  .singup_topbar {
+    position: absolute;
+    display: flex;
+    margin: 3rem 4rem;
+    align-items: center;
+    width: 92%;
+    justify-content: space-between;
+    .login_route {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.3rem;
+      font-family: "Lato", sans-serif;
+      font-size: larger;
+      .login_msg {
+        color: rgb(110, 108, 108);
+      }
+      .login_btn {
+        color: #03ac13;
+        font-weight: 700;
+        text-decoration: none;
+      }
+    }
+  }
+  .signup_left {
+    .signup_image {
+      width: 50vw;
+      height: 99.5vh;
+    }
+  }
+  .signup_right {
+    width: 50vw;
+    height: 100%;
+    margin-top: 12rem;
+    display: flex;
+    flex-direction: column;
+    font-family: "Playfair", serif;
+    align-items: center;
+    gap: 3rem;
+    .singup_heading {
+      display: flex;
+      gap: 0.5rem;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      .h1 {
+        text-align: center;
+        font-size: 2rem;
+        font-weight: 600;
+        margin: 0;
+        padding: 0;
+      }
+      .signup_thumbnail {
+        text-align: center;
+        padding: 0;
+        margin: 0;
+        font-size: larger;
+      }
+    }
+    .signup_using_google{
+      .googleOauth{
+        display:flex;
+        align-items: center;
+        justify-content: center;
+        gap:1rem;
+        border-radius: 6px;
+        border: 1px solid black;
+        background-color:white;
+        padding:0 18px;
+        cursor: pointer;
+        .login_form{
+          font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+        .google_login{
+          width:25px;
+          height:25px;
+        }
+        .login_form{
+          font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+          font-size: large;
+        }
+      }
+    }
+    .login_with_email {
+        width: 80%;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        gap: 0.2rem;
+        @media screen and (min-width: 950px) {
+          gap: 0.5rem;
+          width: 60%;
+        }
+        .hr {
+          width: 25%;
+          height: fit-content;
+          @media screen and (min-width:950px) {
+            width: 35%;
+          }
+        }
+        .option_text {
+          font-size: x-small;
+          width: fit-content;
+          font-style: "Playfair", serif;
+          @media screen and (min-width: 950px) {
+            font-size: medium;
+          }
+        }
+    }
+    .signup_form{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width:70%;
+      gap:2rem;
+      .confirmPassword{
+        width:100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .error_msg{
+          @include error_msg;
+        }
+      }
+      .create_account{
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap:1rem;
+        .create_account_btn{
+          width: 100%;
+          padding:0.5rem;
+          background-color: #20DC49;
+          border:none;
+          border-radius: 4px;
+          color:white;
+          font-weight: 900;
+          font-style: "Playfair", serif;
+          cursor: pointer;
+        }
+        .error_msg{
+          @include error_msg;
+        }
+      }
+    }
+  }
+}

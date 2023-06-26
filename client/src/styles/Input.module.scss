@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap');
+.Input_body{
+    width:80%;
+    display:flex;
+    align-items: center;
+    position: relative;
+    @media screen and (min-width:950px){
+        width: 50%;
+    }
+    .Input{
+        width: 100%;
+        border-radius: 6px;
+        padding:0.5rem 0.8rem;
+        font-family: 'Noto Sans JP', sans-serif;
+        border: 2px solid rgb(156, 153, 153);
+        @media screen and (min-width:950px)
+        {
+            padding: 0.75rem 1rem;
+        }
+    }
+    .showIcons{
+        display: block;
+        position: absolute;
+        top:6px;
+        right:20px;
+        width: 10px;
+        padding: 0;
+        background-color:transparent;
+        border:none;
+        @media screen and (min-width:950px)
+        {
+            top:12px;
+            width: fit-content;
+            height: fit-content;
+        }
+    }
+}

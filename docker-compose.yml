@@ -1,0 +1,42 @@
+version: '3.9'
+services:
+  client:
+    container_name: conferencing_app_client
+    build: ./client
+    volumes:
+      - ./client:/app
+    ports:
+      - '3000:3000'
+    networks:
+      - videoConferencing
+    depends_on:
+      - apis
+  apis:
+    container_name: conferencing_app_apis
+    build: ./server
+    volumes:
+      - ./server:/app
+    ports:
+      - '4000:4000'
+    networks:
+      - videoConferencing
+    depends_on: 
+      - db
+  db:
+    container_name: conferencing_app_db
+    image: mysql:latest
+    restart: always
+    volumes:
+      - dbdata:/var/lib/mysql
+    ports:
+      - '3306:3306'
+    environment:
+      MYSQL_ROOT_PASSWORD: Harit1273#
+      MYSQL_DATABASE: conferencing_db
+      MYSQL_PASSWORD: Haritscode1273#
+    networks:
+      - videoConferencing
+networks:
+  videoConferencing:
+volumes:
+  dbdata:

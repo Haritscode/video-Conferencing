@@ -1,0 +1,15 @@
+.popUpItem{
+    display:flex;
+    align-items: center;
+    width: fit-content;
+    justify-content: start;
+    gap:1rem;
+    width:225px;
+    font-weight: 600;
+    cursor: pointer;
+    padding:12px 12px;
+    &:hover{
+        background-color: gainsboro;
+        border-radius:4px;
+    }
+}
