@@ -1,0 +1,31 @@
+@import './global.scss';
+.checkbox_main{
+    display:flex;
+    align-items: center;
+    gap:6px;
+    @media screen and (min-width:$BigDesktopScreen)
+    {
+        gap:8px;
+    }
+    .checkbox{
+        width:10px;
+        height:10px;
+        margin: 0;
+        padding: 0;
+        @media screen and (min-width:$BigDesktopScreen) {
+            width:20px;
+            height:20px;
+        }
+
+    }
+    .label{
+        font-family: 'Roboto', sans-serif;
+        font-size: small;
+        margin: 0;
+        padding: 0;
+        @media screen and (min-width:$BigDesktopScreen)
+        {
+            font-size: medium;
+        }
+    }
+}

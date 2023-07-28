@@ -1,0 +1,188 @@
+@import './global.scss';
+@mixin error_msg {
+    padding: 0;
+    margin: 0;
+    color: red;
+    font-family: "Lato", sans-serif;
+  }
+.signup_content {
+    width: 100%;
+    margin: 8rem 0;
+    display: flex;
+    flex-direction: column;
+    font-family: "Playfair", serif;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+    z-index: 100;
+    @media screen and (min-width:$tabletScreen) and (max-width:$DesktopScreen) {
+      justify-content: center;
+    }
+    
+    @media screen and (min-width:$DesktopScreen) {
+      margin-top: 12rem;
+      width: 50vw;
+    }
+
+    .singup_heading {
+      display: flex;
+      gap: 0.5rem;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      
+      .h1 {
+        text-align: center;
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin: 0;
+        padding: 0;
+
+        @media screen and (min-width:$mobileScreen) {
+          font-size: 2rem;
+        }
+
+        @media screen and (min-width:$tabletScreen) {
+          font-size: 2.5rem;
+        }
+
+        @media screen and (min-width:$DesktopScreen) {
+          font-size: 3rem;
+        }
+      }
+
+      .signup_thumbnail {
+        text-align: center;
+        padding: 0;
+        margin: 0;
+        font-size: larger;
+
+        @media screen and (min-width:$mobileScreen) {
+          font-size: large
+        }
+
+        @media screen and (min-width:$tabletScreen) {
+          font-size: x-large;
+        }
+
+        @media screen and (min-width:$DesktopScreen) {
+          font-size: xx-large;
+        }
+      }
+    }
+
+    .signup_with_email {
+      width: 60%;
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
+      gap: 0.2rem;
+
+      @media screen and (min-width:$mobileScreen) {
+        gap: 0rem;
+      }
+      
+      @media screen and (min-width: $DesktopScreen) {
+        gap: 0.5rem;
+        width: 60%;
+      }
+      
+      .hr {
+        width: 22%;
+        height: fit-content;
+
+        @media screen and (min-width:$mobileScreen) {
+          width: 25%;
+        }
+
+        @media screen and (min-width:$tabletScreen) {
+          width: 28%;
+        }
+
+        @media screen and (min-width:$betweenTableDesktopScreen) {
+          width: 32%;
+        }
+
+        @media screen and (min-width:$DesktopScreen) {
+          width: 28%;
+        }
+
+        @media screen and (min-width:$BigDesktopScreen) {
+          width: 32%;
+        }
+      }
+
+      .option_text {
+        font-size: small;
+        width: fit-content;
+        font-style: "Playfair", serif;
+
+        @media screen and (min-width:$mobileScreen) {
+          font-size: medium;
+        }
+
+        @media screen and (min-width:$tabletScreen) {
+          font-size: large;
+        }
+
+        @media screen and (min-width:$BigDesktopScreen) {
+          font-size: medium;
+        }
+      }
+    }
+
+    .signup_form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 60%;
+      gap: 2rem;
+
+      @media screen and (min-width:$mobileScreen) {
+        width: 60%;
+      }
+
+      @media screen and (min-width:$tabletScreen) {
+        width: 40%;
+      }
+
+      @media screen and (min-width:$DesktopScreen) {
+        width: 50%;
+      }
+
+      .confirmPassword {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .error_msg {
+          @include error_msg;
+        }
+      }
+
+      .create_account {
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+
+        .create_account_btn {
+          width: 100%;
+          padding: 0.5rem;
+          background-color: #20DC49;
+          border: none;
+          border-radius: 4px;
+          color: white;
+          font-weight: 900;
+          font-style: "Playfair", serif;
+          cursor: pointer;
+        }
+        
+        .error_msg {
+          @include error_msg;
+        }
+      }
+    }
+  }

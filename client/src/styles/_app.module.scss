@@ -1,0 +1,25 @@
+@import './global.scss';
+@keyframes loginPopUp_animation{
+    0%{
+        opacity: 0;
+    }
+    25%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+.login_component{
+    position: absolute;
+    display: flex;
+    width:100vw;
+    height:100vh;
+    overflow:auto;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+    background: transparentize($color: #A0A0A0, $amount: 0.2);
+    animation-name: loginPopUp_animation;
+    animation-duration: 500ms;
+}

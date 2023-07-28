@@ -1,0 +1,68 @@
+@import '@/styles/global.scss';
+.item_before,
+.item_after {
+    width: 100%;
+    border-radius: 28px;
+    display: flex;
+    align-items: center;
+    font-size: xx-large;
+    height: 50px;
+    justify-content: space-between;
+    cursor: pointer;
+    padding:0 12px;
+
+    .left_before,
+    .left_after {
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+        justify-content: center;
+
+        .icon {
+            width: 25px;
+            padding: 0 0 0 24px;
+            font-weight: 100 !important;
+            margin: 0;
+            color: rgb(80, 80, 80);
+            font-weight: lighter;
+        }
+
+        .name {
+            padding: 0;
+            margin: 0;
+            font-family: $fontRoboto;
+            font-size: large;
+            color: black;
+        }
+    }
+}
+
+.item_after {
+    background-color: blue;
+
+    .left_after {
+        .icon {
+            fill: white;
+        }
+
+        .name {
+            color: white;
+        }
+    }
+}
+
+.new_update {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: red;
+
+    .count {
+
+        margin: 0;
+        font-size: small;
+        color: white;
+        font-weight: 600;
+    }
+}

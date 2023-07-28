@@ -1,4 +1,5 @@
 import React from 'react'
+import styles from '../../styles/Button.module.scss'
 interface data{
     type:string,
     backgroundColor:string,
@@ -7,16 +8,15 @@ interface data{
     padding:string,
     color:string,
     width:string,
+    height:string,
     icon:any,
     boxShadow:string,
     fontSize:string,
     fontWeight:string,
     buttonClick:Function
 }
-import styles from '../../styles/Button.module.scss'
-import { FunctionBody } from 'typescript'
-export default function NavbarButtons({type,backgroundColor,border,borderRadius,padding,color,width,icon,boxShadow,fontSize,fontWeight,buttonClick}:data) {
+export default function NavbarButtons({type="",backgroundColor="",border="",borderRadius="",padding="",color="",width="",icon="",boxShadow="",fontSize="",fontWeight="",height,buttonClick}:data) {
   return (
-    <button className={styles.navbar_button} onClick={buttonClick} style={{backgroundColor,border,borderRadius,padding,color,boxShadow,fontSize,fontWeight}}>{icon} {type}</button>
+    <button className={styles.navbar_button} onClick={(e)=>buttonClick(e)} style={{height,backgroundColor,border,borderRadius,padding,color,boxShadow,fontSize,fontWeight,width}}>{icon} {type}</button>
   )
 }

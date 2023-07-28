@@ -22,6 +22,7 @@ services:
       - videoConferencing
     depends_on: 
       - db
+      - redis
   db:
     container_name: conferencing_app_db
     image: mysql:latest
@@ -29,11 +30,18 @@ services:
     volumes:
       - dbdata:/var/lib/mysql
     ports:
-      - '3306:3306'
+      - '3307:3306'
     environment:
       MYSQL_ROOT_PASSWORD: Harit1273#
       MYSQL_DATABASE: conferencing_db
       MYSQL_PASSWORD: Haritscode1273#
+    networks:
+      - videoConferencing
+  redis:
+    image: redis:alpine
+    restart: always
+    ports:
+      - '6379:6379'
     networks:
       - videoConferencing
 networks:

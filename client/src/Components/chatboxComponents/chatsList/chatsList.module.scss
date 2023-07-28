@@ -1,0 +1,89 @@
+@import '../chatboxGlobal.scss';
+@import '@/styles/global.scss';
+.chat{
+    padding: 0;
+    margin: 0;
+    height:100vh;
+    border-right: 1px solid gainsboro;
+    width:25vw;
+    list-style: none;
+    .item1{
+        border-bottom: 1px solid gainsboro;
+        padding: 0;
+        margin: 0;
+        display:flex;
+        align-items: center;
+        padding:0 1rem;
+        height:$topHeight;
+        justify-content: space-between;
+        .section_name{
+            padding: 0;
+            font-size: 2rem;
+            margin: 0;
+            font-family: $fontRoboto;
+            color:rgb(56, 179, 228);
+        }
+        .requests_newChat{
+            position: relative;
+            .right_side{
+                position: relative;
+                cursor: pointer;
+                background: none;
+                border:none;
+                .addUser_icons{
+                    font-size: x-large;
+                    color:gray;
+                }
+            }
+        }
+    }
+    .items{
+        display:flex;
+        flex-direction: column;
+        height:90vh;
+        overflow: scroll;
+        padding: 0;
+        margin: 0;
+        overflow-x: hidden;
+        -ms-overflow-style: none;
+        &::-webkit-scrollbar{
+            display:none;
+        }
+        .item2,.item3{
+            display:flex;
+            flex-direction: column;
+            align-items: center;
+            .Messages{
+            margin-top:1rem;
+            list-style: none;
+            padding: 0;
+            display:flex;
+            flex-direction: column;
+            gap:1.5rem;
+            width: 90%;
+            .pinned_Messages{
+                .head{
+                    align-items: center;
+                    display:flex;
+                    padding: 0;
+                    margin: 0;
+                    font-family: $fontRoboto;
+                    color: gainsboro;
+                    gap:0.5rem;
+                    font-size: small;
+                    font-weight: 500;
+                }
+            }
+            .pinned_item_list{
+                list-style: none;
+                padding: 0;
+                margin: 0;
+                display:flex;
+                flex-direction: column;
+                max-height: 40vw;
+                gap:0.2rem;
+            }
+        }
+    }
+}
+}

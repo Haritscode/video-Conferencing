@@ -1,12 +1,27 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap');
+@import './global.scss';
+@keyframes navbaranimation {
+    0%{
+        bottom:40%;
+        opacity: 0;
+    }
+    25%{ 
+        opacity: 0;
+    }
+    100%{
+        bottom:0;
+        opacity: 1;
+    }
+}
 .Navbar{
+    @include globalPadding;
     display:flex;
     align-items: center;
     list-style: none;
-    width: 100%;
-    // background-color: aquamarine;
     justify-content: space-between;
-    padding:0;
+    position: relative;
+    animation: navbaranimation;
+    animation-duration: 2s;
     .navbar_icons{
         width:40px;
         height:40px;
@@ -23,13 +38,60 @@
         }
        }
     }
-    .signup_login{
+    .Navbar_Right{
         .signup_login_list{
             display:flex;
             align-items: center;
             gap:1rem;
             padding:0;
             list-style: none;
+            .nav_link{
+                text-decoration: none;
+                width: fit-content;
+            }
+        }
+        .userInfo_list{
+            list-style: none;
+            display:flex;
+            gap:1.5rem;
+            align-items: center;
+            justify-content: center;
+            color:white;
+            .userImage{
+                .image{
+                    width:32px;
+                    height:32px;
+                    border-radius: 50%;
+                }
+            }
+            .email_box{
+                height:32px;
+                background-color: transparentize($color: black, $amount: 0.2);
+                border-radius: 18px;
+                z-index:100;
+                display:flex;
+                cursor: pointer;
+                align-items: center;
+                .email{
+                    margin:0 18px;
+                    max-width:20    0px;
+                    overflow: hidden;
+                    z-index: 888;
+                    font-weight: 800;
+                }
+            }
+            .DefaultLogo{
+                background-color: green;
+                width:36px;
+                height:36px;
+                display:flex;
+                align-items: center;
+                justify-content: center;
+                font-size: large;
+                font-weight: 600;
+                cursor:pointer;
+                border-radius: 50%;
+            }
         }
     }
 }

@@ -18,10 +18,10 @@ const linkData=[
         text:"Schedule in Calender",
     }
 ]
-const CreateMeetingPopup = () => {
+const CreateMeetingPopup = ({setCreateMeetingtype}:{setCreateMeetingtype:Function}) => {
     return (
         <ol className={styles.popup_body}>
-            {linkData.map(item=><PopupItem icon={item.icon} text={item.text}/>)}
+            {linkData.map((item,count)=><PopupItem key={count} icon={item.icon} text={item.text} setCreateMeetingtype={setCreateMeetingtype}/>)}
         </ol>
     );
 }

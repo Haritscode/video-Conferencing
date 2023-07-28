@@ -1,0 +1,15 @@
+@mixin globalPadding{
+    padding:1rem 3rem;
+}
+$mobileScreen:450px;
+$tabletScreen:650px;
+$betweenTableDesktopScreen:750px;
+$DesktopScreen:1200px;
+$BigDesktopScreen:1400px;
+$fontInter:'Inter', sans-serif;
+$fontRoboto:'Roboto', sans-serif;
+$fontGaramond: 'EB Garamond', serif;
+$fontNotoSans: 'Noto Sans JP', sans-serif;
+$fontCourierNew: 'Courier New', Courier, monospace;
+$fontLato: "Lato", sans-serif;
+$fontPlayfair: "Playfair", serif;

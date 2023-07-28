@@ -1,0 +1,162 @@
+@import './global.scss';
+.login_form{
+    display:flex;
+    flex-direction: column;
+    background-color: white;
+    height:fit-content;
+    position: relative;
+    gap:1rem;
+    @media screen and (min-width:$BigDesktopScreen) {
+        gap:2rem;
+        width:30vw;
+    }
+    .close_login_popup_btn{
+        position: absolute;
+        padding: 0;
+        right:0;
+        background:none;
+        width:fit-content;
+        height: fit-content;
+        border: none;
+        cursor: pointer;
+        top:10px;
+        right:10px;
+        border-radius: 50%;
+    }
+    .head {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+        
+        @media screen and (min-width:$BigDesktopScreen) {
+            gap: 3rem;
+        }
+        
+        .topImage {
+            width: 120px;
+            height: 80px;
+            
+            @media screen and (min-width:$BigDesktopScreen) {
+                width: 280px;
+                height: 160px;
+            }
+        }
+        
+        .desc {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+
+            // @media screen and (min-width:$BigDesktopScreen){
+            //     gap:2rem;
+            // }
+            .greetings {
+                font-family: 'Roboto', sans-serif;
+                font-weight: 500;
+                padding: 0;
+                margin: 0;
+                font-size: x-large;
+
+                @media screen and (min-width:$BigDesktopScreen) {
+                    font-size: xx-large;
+                }
+            }
+
+            .fill_request {
+                padding: 0;
+                margin: 0;
+                font-family: 'Roboto', sans-serif;
+                font-weight: 300;
+                color: rgb(83, 83, 83);
+                font-size: smaller;
+
+                @media screen and (min-width:$BigDesktopScreen) {
+                    font-size: larger;
+                }
+
+            }
+        }
+
+    }
+
+    .head_main_divider {
+        display: flex;
+        position: relative;
+        justify-content: center;
+        
+        .hr {
+            width: 80%;
+        }
+        
+        .text {
+            position: absolute;
+            padding: 0;
+            bottom: 0;
+            margin: 0;
+            background-color: white;
+            width: 20%;
+            text-align: center;
+            
+            @media screen and (min-width:$BigDesktopScreen) {
+                width: 10%;
+            }
+        }
+    }
+
+    .login_form_section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            width: 80%;
+
+            @media screen and (min-width:$BigDesktopScreen) {
+                gap: 3rem;
+                width: 60%;
+            }
+
+            .password {
+                display:flex;
+                flex-direction: column;
+                gap:0.5rem;
+                @media screen and (min-width:$BigDesktopScreen)
+                {
+                    gap:1rem;
+                }
+                .login_options {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+
+                    .forget_Password {
+                        background: none;
+                        border: none;
+                        color: rgb(0, 162, 255);
+                        cursor: pointer;
+                    }
+                }
+
+            }
+            .login_button {
+                background-color: rgb(41, 41, 41);
+                color: white;
+                border: none;
+                border-radius: 6px;
+                font-family: 'Roboto', sans-serif;
+                cursor: pointer;
+                padding: 6px 12px;
+                font-weight: 500;
+                font-size: large;
+                @media screen and (min-width:$BigDesktopScreen) {
+                    padding: 12px 14px;
+                }
+            }
+        }
+    }
+}

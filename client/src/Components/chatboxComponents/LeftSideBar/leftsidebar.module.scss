@@ -1,0 +1,154 @@
+@import '@/styles/global.scss';
+@import '../chatboxGlobal.scss';
+
+.left_side_list {
+    @media screen and (min-width:$BigDesktopScreen) {
+        width: 15vw;
+        height: 100vh;
+        border-right: 1px solid gainsboro;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        margin: 0;
+        list-style: none;
+        padding:0;
+        font-family: $fontRoboto;
+    }
+    
+    .left_side_top {
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        
+        .item1 {
+            display: flex;
+            width: 100%;
+            height: $topHeight;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+            border-bottom: 1px solid gainsboro;
+
+            .box {
+                width: 70%;
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+
+                .icon {
+                    width: 50px;
+                    height: 50px;
+                }
+
+                .name {
+                    font-size: xx-large;
+                    font-family: 'Inter', sans-serif;
+                    font-weight: 600;
+                }
+            }
+        }
+
+        .item2 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-top: 12px;
+            width: 100%;
+
+            .menu_list {
+                width: 80%;
+                display: flex;
+                flex-direction: column;
+                gap: 0.75rem;
+                align-items: start;
+                justify-content: center;
+                padding: 0;
+                margin: 0;
+            }
+        }
+    }
+
+    .item3 {
+        padding-bottom: 4rem;
+        width:100%;
+        display:flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        .menu_list {
+            width: 100%;
+            display:flex;
+            list-style: none;
+            flex-direction: column;
+            gap:2rem;
+            align-items: center;
+            .back_button{
+                text-decoration: none;
+                color:black;
+                width: 80%;
+                display: flex;
+                justify-content: start;
+            .item{
+                display: flex;
+                align-items: center;
+                gap:1.5rem;
+                justify-content: start;
+                cursor: pointer;
+                width:80%;
+                .icon {
+                    font-size: xx-large;
+                    padding: 0 0 0 24px;
+                    font-weight: 100 !important;
+                    margin: 0;
+                    padding: 0;
+                    color: rgb(80, 80, 80);
+                    font-weight: lighter;
+                }
+
+                .name {
+                    padding: 0;
+                    margin: 0;
+                    font-family: $fontRoboto;
+                    font-size: large;
+                    color: black;
+                }
+            }
+        }
+            .userProile{
+                display:flex;
+                align-items: center;
+                justify-content: start;
+                gap:1rem;
+                width: 80%;
+                .userImage{
+                    width:40px;
+                    height:40px;
+                    border-radius: 50%;
+                }
+                .info{
+                    display:flex;
+                    flex-direction: column;
+                    .userName{
+                        padding: 0;
+                        margin: 0;
+                        font-size: large;
+                    }
+                    .logout{
+                        padding: 0;
+                        margin: 0;
+                        color:rgb(161, 161, 161);
+                        cursor: pointer;
+                        border:none;
+                        background: transparent;
+                        width: fit-content;
+                        &:hover{
+                            color:rgb(65, 65, 65);
+                        }
+                    }
+                }
+
+            }
+        }
+    }
+}

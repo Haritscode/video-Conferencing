@@ -1,0 +1,217 @@
+@import '../../../styles/global.scss';
+@import '../chatboxGlobal.scss';
+
+.chat {
+    width: 100%;
+    height: 100vh;
+    background-color: white;
+    overflow: hidden;
+    position: relative;
+
+    .top {
+        display: flex;
+        border-bottom: 1px solid gainsboro;
+        padding: 0 4rem;
+        justify-content: space-between;
+        align-items: center;
+
+        .left {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+            height: $topHeight;
+
+            .userImg {
+                width: 80px;
+                height: 80px;
+                border-radius: 50%;
+            }
+
+            .chatDescription {
+                font-family: $fontRoboto;
+                display: flex;
+                flex-direction: column;
+                gap: 0.4rem;
+
+                .chatting_to {
+                    font-size: xx-large;
+                    padding: 0;
+                    margin: 0;
+                    font-weight: 400;
+                }
+
+                .popup_updater {
+                    height: 20px;
+                    overflow: hidden;
+                    display: flex;
+                    align-items: center;
+                    position: relative;
+
+                    .user_typing {
+                        color: green;
+                        font-family: $fontInter;
+                        font-weight: 100;
+                        position: absolute;
+                        top: 40px;
+                        transition-duration: 1s;
+                    }
+
+                    .last_seen {
+                        font-size: medium;
+                        position: absolute;
+                        top: 40px;
+                        transition-duration: 1s;
+                        font-weight: 500;
+                        color: rgb(155, 152, 152);
+                    }
+                }
+            }
+        }
+        .right{
+            display:flex;
+            align-items: center;
+            gap:2rem;
+            .more_options{
+                border:1px solid gray;
+                background: transparent;
+                cursor: pointer;
+                width:30px;
+                height:30px;
+                border-radius: 50%;
+                display:flex;
+                align-items: center;
+                justify-content: center;
+                .menu_icon{
+                    font-size: x-large;
+                }
+    
+            }
+            .telephone{
+    
+                border:none;
+                background: transparent;
+                cursor: pointer;
+                width:fit-content;
+                height:fit-content;    
+                .telephone_icon{
+                    font-size: x-large;
+                }
+            }
+            .camera_button{
+    
+                border:none;
+                background: transparent;
+                cursor: pointer;
+                width:fit-content;
+                height:fit-content;    
+                .camera_icon{
+                    font-size: x-large;
+                }
+            }
+        }
+    }
+    .chat_section{
+        height:85%;
+        width:100%;
+        overflow: scroll;
+        background-color: rgba(0, 183, 255, 0.055);
+        &::-webkit-scrollbar {
+            display: none;
+        }
+    }
+    .chat_messanger{
+        width:100%;
+        height:8vh;
+        position: absolute;
+        background-color: white;
+        bottom:0;
+        display:flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        .input_wrapper{
+            padding:14px 0;
+            width:90%;
+            background-color: rgba(0, 183, 255, 0.055);
+            border-radius: 28px;
+            position: relative;
+            display:flex;
+            align-items: center;
+            .mics{
+                position: absolute;
+                width:40px;
+                height:40px;
+                background:none;
+                border: none;
+                display:flex;
+                left:0.5rem;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                .mic_icon{
+                    font-size: large;
+                    color:gray;
+                    cursor: pointer;
+                }
+            }
+            .input_msg{
+                width:100%;
+                padding-left:3rem;
+                padding-right:10rem;
+                font-family: $fontRoboto;
+                font-size: medium;
+                font-weight: 100;
+                border:none;
+                background: none;
+                outline: none;
+            }
+            .list{
+                position: absolute;
+                list-style: none;
+                right:1rem;
+                display:flex;
+                gap:1.5rem;
+                .image{
+                    .image_icon{
+                        color:gray;
+                        font-size: x-large;
+                        cursor: pointer;
+                    }
+                }
+                .picker{
+                    position: relative;
+                    list-style: none;
+                    display:flex;
+                    gap:1rem;
+                    .emoji_picker{
+                        position: absolute;
+                        bottom:30px;
+                        right:10px;
+                        height:435px;
+                        transition-duration: 1s;
+                        overflow: hidden;
+
+                        background-color: white;
+                    }
+                    .picker_button{
+                        border:none;
+                        background:none;
+                        cursor: pointer;
+                        .picker_icon{
+                            font-size: x-large;
+                            color:gray;
+                        }
+                    }
+                }
+                .location{
+                    .location_icon{
+                        color:gray;
+                        font-size: x-large;
+                        cursor: pointer;
+                    }
+                }
+            }
+
+        }
+    }
+}

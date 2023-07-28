@@ -18,6 +18,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/redux/features/showLogin.tsx", "src/redux/store.tsx", "src/redux/provider/provider.js", "src/Components/Navbar/Navbar.tsx"],
   "exclude": ["node_modules"]
 }

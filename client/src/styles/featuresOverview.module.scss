@@ -1,0 +1,81 @@
+@import './global.scss';
+.FeaturesBody{
+    background-color: #4C36CD;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding:6rem 0rem;
+    gap:4rem;
+    @media screen and (min-width:350px) {
+        padding:8rem 1rem;
+    }
+    @media screen and (min-width:$BigDesktopScreen) {
+        @include globalPadding;
+        height:80vh;
+    }
+    .head{
+        font-family: 'Inter', sans-serif;
+        display:flex;
+        flex-direction: column;
+        align-items: center;
+        gap:2rem;
+        .heading{
+            text-align: center;
+            font-size: 9vw;
+            line-height: 36px;
+            color:white;
+            margin: 0;
+            @media screen and (min-width:$mobileScreen){
+                font-size: 2.5rem;
+                line-height: normal;
+            }
+            @media screen and (min-width:$BigDesktopScreen){
+                font-size: 2.7rem;
+                line-height: 62px;
+                font-weight: 400;
+                width:650px;
+                width: 100%;
+            }
+        }
+        .description{
+            text-align: center;
+            color:white;
+            padding: 0;
+            line-height: 18px;
+            margin: 0;
+            font-size: 4vw;
+            @media screen and (min-width:$mobileScreen){
+                font-size: 1rem;
+                line-height: normal;
+            }
+            @media screen and (min-width:$BigDesktopScreen){
+                font-size: 2.7rem;
+                font-size: smaller;
+                font-weight: 400;
+                width:510px;
+            }
+        }
+    }
+    .main{
+        width:100%;
+        padding: 0;
+        margin: 0;
+        display:grid;
+        justify-content: space-around;
+        align-items: center;
+        gap:2rem;
+        @media screen and (min-width:$betweenTableDesktopScreen) {
+            grid-template-columns: auto auto;
+            row-gap: 6rem;     
+        }
+        @media screen and (min-width:$BigDesktopScreen){
+            width:100%;
+            grid-template-columns: auto auto auto auto;
+            flex-direction: row;
+        }
+        .main_list{
+            list-style: none;
+        }
+    }
+}

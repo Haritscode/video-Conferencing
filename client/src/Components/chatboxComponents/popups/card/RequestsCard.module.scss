@@ -1,0 +1,37 @@
+@import '../../../../styles/global.scss';
+.list{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+    justify-content: space-between;
+    
+    .body{
+        display:flex;
+        align-items: center;
+        gap:1rem;
+        .userImage{
+        width: 50px;
+        height: 50px;
+            border-radius: 50%;
+        }
+        .user_description{
+            font-family: $fontRoboto;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            .email{
+                font-weight: 600;
+                font-size: small;
+            }
+            .name{
+                font-size: small;
+            }
+        }
+    }
+    .accept_decline_btns{
+        display:flex;
+        align-items: center;
+        gap:0.5rem;
+    }
+}

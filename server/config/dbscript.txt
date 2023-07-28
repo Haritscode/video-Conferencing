@@ -1,0 +1,7 @@
+create table userd(uid varchar(500) primary key,name varchar(100) not null,email varchar(100) not null,password varchar(100) not null,profileUrl varchar(1000) unique, createdAt datetime default create_timestamp)
+
+create table otpd(email varchar(100) unique,otp mediumint unique,createdAt datetime default current_timestamp)
+
+create table groupInfod(groupId varchar(50) primary key,createdBy varchar(50) not null,createdAt datetime DEFAULT current_timestamp not null,isActive BOOLEAN not null,lastActive datetime DEFAULT current_timestamp,groupType ENUM("one-on-one","group","community") default "one-on-one" not null, foreign key groupId references user(uid))
+
+create table invitations(sendBy varchar(100) not null,sendTo varchar(100) not null,isAccepted boolean not null default false,status enum("responded","seen","not seen yet") not null default "not seen yet",foreign key (sendBy) references user(email),foreign key(sendTo) references user(email));
