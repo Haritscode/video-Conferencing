@@ -12,7 +12,7 @@ const { verifyToken } = require("./src/middlewares/tokens.middleware");
 const http=require("http");
 const server=http.createServer(app);
 const chats=require('./src/routes/chats.routes');
-const errorHandler=require("./config/errorHandler/customErrorHandler");
+const errorHandler=require("./src/middlewares/errorHandler.middleware");
 app.use(morgan('tiny'))
 const cookieParser = require("cookie-parser");
 const setHeaders = require("./src/middlewares/setHeaders.middleware");
@@ -33,12 +33,12 @@ app.use(session({
 }))
 app.use(express.json());
 app.use(passport.initialize());
-app.use(passport.session())
-app.use(setHeaders)
+app.use(passport.session());
+app.use(setHeaders);
 
 app.use("/auth", auth);
 app.use(verifyToken)
-app.use("/chats",chats)
+app.use("/chats",chats);
 app.use(errorHandler);
 
 socketio(server);

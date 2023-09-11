@@ -11,7 +11,6 @@ const userInfo=require("../Controller/userInfo.controller");
 const {googleLoginSuccess,googleLoginFail}=require("../Controller/Google.controller");
 const logout = require("../Controller/logout.controller");
 
-
 routes.post("/login", isUserExists,ExistedUserVerification);
 routes.post("/signup", newUserVerification);
 routes.post("/verifyuser",verifyOtp,createUser,Token);

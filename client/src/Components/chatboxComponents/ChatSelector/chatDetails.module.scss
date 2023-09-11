@@ -1,6 +1,6 @@
 @import '../../../styles/global.scss';
 
-.messageBody {
+.messageBody,.messageBody_active {
     display: flex;
     align-items: center;
     justify-content: start;
@@ -9,12 +9,10 @@
     padding: 0;
     margin: 0;
     padding: 12px;
-
     &:hover {
-        background-color: gainsboro;
+        background-color: rgb(240, 240, 240);
         border-radius: 12px;
     }
-
     cursor: pointer;
 
     .image {
@@ -148,6 +146,22 @@
                         margin: 0;
 
                     }
+                }
+            }
+        }
+    }
+}
+.messageBody_active{
+    background-color: rgb(224, 224, 224);
+    border-radius: 12px;
+    &:hover{
+        background-color: rgb(224, 224, 224)    ;
+    }
+    .sender_Details {
+        .other_properties {
+            .last_msg_update {
+                .last_message {
+                    color: black;
                 }
             }
         }

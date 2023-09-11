@@ -2,6 +2,10 @@ import { createSlice,PayloadAction } from "@reduxjs/toolkit";
 const initialState:initialStateProps={
     requestList:[],
     userMessageList:[],
+    activeChat:{email:""}
+}
+interface activeChat{
+    email:String
 }
 interface requestDataType{
     email:String,
@@ -11,6 +15,7 @@ interface requestDataType{
 interface initialStateProps{
     requestList:Array<any>,
     userMessageList:Array<any>
+    activeChat:activeChat
 }
 export const chatData=createSlice({
     name:"chats",
@@ -19,8 +24,12 @@ export const chatData=createSlice({
         setRequests:(state,action:PayloadAction<Array<requestDataType>>)=>{
             state.requestList=action.payload
             return;
+        },
+        setActiveChat:(state,action:PayloadAction<activeChat>)=>{
+            state.activeChat=action.payload
+            return;
         }
     }
 })
-export const {setRequests}=chatData.actions;
+export const {setRequests,setActiveChat}=chatData.actions;
 export default chatData.reducer;

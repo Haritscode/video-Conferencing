@@ -1,0 +1,33 @@
+@import '../../../styles/global.scss';
+.messagebox{
+    display:flex;
+    gap:0.8rem;
+    .userProfileImage{
+        width: 60px;
+        height:60px;
+        border-radius: 50%;
+    }
+    .details{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap:1rem;
+        .senderName{
+            font-weight: 600;
+            font-family:$fontRoboto;
+        }
+        .message_section{
+            display:flex;
+            flex-direction: column;
+            gap:0.4rem;
+            max-width: 350px;
+            .message_text{
+                background-color: white;
+                padding: 8px 12px ;
+                line-height: 24px;
+                border-radius: 8px; 
+                font-family: $fontRoboto;
+            }
+        }
+    }
+}

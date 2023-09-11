@@ -1,7 +1,14 @@
-create table userd(uid varchar(500) primary key,name varchar(100) not null,email varchar(100) not null,password varchar(100) not null,profileUrl varchar(1000) unique, createdAt datetime default create_timestamp)
+create table user(uid varchar(500) primary key,name varchar(100) not null,email varchar(100) not null,password varchar(100) not null,profileUrl varchar(1000) unique, createdAt datetime default current_timestamp)
 
-create table otpd(email varchar(100) unique,otp mediumint unique,createdAt datetime default current_timestamp)
+create table otp(email varchar(100) unique,otp mediumint unique,createdAt datetime default current_timestamp)
 
-create table groupInfod(groupId varchar(50) primary key,createdBy varchar(50) not null,createdAt datetime DEFAULT current_timestamp not null,isActive BOOLEAN not null,lastActive datetime DEFAULT current_timestamp,groupType ENUM("one-on-one","group","community") default "one-on-one" not null, foreign key groupId references user(uid))
+create table groupInfo(groupId varchar(50) primary key,createdBy varchar(50) not null,createdAt datetime DEFAULT current_timestamp not null,isActive BOOLEAN not null,lastActive datetime DEFAULT current_timestamp,groupType ENUM("one-on-one","group","community") default "one-on-one" not null, foreign key groupId references user(uid))
 
-create table invitations(sendBy varchar(100) not null,sendTo varchar(100) not null,isAccepted boolean not null default false,status enum("responded","seen","not seen yet") not null default "not seen yet",foreign key (sendBy) references user(email),foreign key(sendTo) references user(email));
+create table connections(id INT auto_increment primary key,senderId varchar(100) not null,receiverId varchar(100) not null,status ENUM('requested','accepted','decline') default 'requested',createdAt datetime default current_timestamp, foreign key (senderId) references user(uid), foreign key (receiverId) references user(uid),unique key unique_users_pair(senderId,receiverId));
+
+create table messages (id int auto_increment primary key, sendBy varchar(50) not null,sendTo varchar(50) not null,message mediumtext not null,createdAt datetime not null default current_timestamp,timeTimeStamp bigint not null,foreign key (sendTo) references user(uid), foreign key (sendTo) references user(uid));
+
+create table chatDetails(id bigint primary key auto_increment,sendBy varchar(50) not null,sendTo varchar(50) not null,msgId int not null, foreign key (msgId) references messages(id),unique key unique_sender_receiver(sendBy,sendTo));
+
+create table userStatus(uid varchar(500) primary key, chatStatus enum('active','inactive') not null default 'inactive',foreign key (uid) references user(uid));
+

@@ -1,6 +1,6 @@
 const userDb=require("../../config/db/config");
 const ErrorHandler = require("../../config/errorHandler/customErrorHandler");
-const userInfo=(req,res)=>{
+const userInfo=(req,res,next)=>{
     const {email}=req.userInfo;
     userDb.query(`SELECT * FROM user WHERE email="${email}"`,(err,result)=>{
         if(err){

@@ -10,8 +10,8 @@ const Token=(req,res)=>{
                 next(new ErrorHandler("Internal Server Error",500));
             }
             else{
-                const refreshToken=jwt.sign({email:result[0].email,id:result[0].uid},`${process.env.REFRESHTOKENPRIVATEKEY}`,{expiresIn:"60d"});
-                const accessToken=jwt.sign({email},`${process.env.ACCESSTOKENPRIVATEKEY}`,{expiresIn:'6h'});
+                const refreshToken=jwt.sign({id:result[0].uid},`${process.env.REFRESHTOKENPRIVATEKEY}`,{expiresIn:"60d"});
+                const accessToken=jwt.sign({id:result[0].uid,email},`${process.env.ACCESSTOKENPRIVATEKEY}`,{expiresIn:'6h'});
                 res.cookie('rtoken',`Bearer ${refreshToken}`,{maxAge:1000*60*60*24*60,secure:true});
                 res.cookie('atoken',`Bearer ${accessToken}`,{maxAge:1000*60*60*6,secure:true});
                 res.status(200).json({name:result[0].name,email:result[0].email,profileUrl:result[0].profileUrl})
@@ -36,7 +36,7 @@ const verifyToken=(req,res,next)=>{
                     next(new ErrorHandler("Unauthorized User",401))
                 }
                 else{
-                    req.userInfo={email:decoded.email};
+                    req.userInfo={email:decoded.email,id:decoded.id};
                     next();
                 }
             })
@@ -47,11 +47,13 @@ const verifyToken=(req,res,next)=>{
                     next(new ErrorHandler("Unauthorized User",401))
                 }
                 else{
-                    const {email}=decoded;
-                    const atoken=jwt.sign({email},`${process.env.ACCESSTOKENPRIVATEKEY}`,{expiresIn:'6h'});
-                    res.cookie('atoken',`Bearer ${atoken}`,{maxAge:1000*60*60*6});
-                    req.userInfo={email};
-                    next();
+                    const {id}=decoded;
+                    db.query(`select email from user where uid="${id}"`,(err,result)=>{
+                        const atoken=jwt.sign({email:result[0].email,id},`${process.env.ACCESSTOKENPRIVATEKEY}`,{expiresIn:'6h'});
+                        res.cookie('atoken',`Bearer ${atoken}`,{maxAge:1000*60*60*6});
+                        req.userInfo={email:result[0].email,id};
+                        next();
+                    })
                 }
             })
 

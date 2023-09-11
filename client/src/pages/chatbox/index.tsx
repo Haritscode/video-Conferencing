@@ -5,10 +5,10 @@ import { useSelector,useDispatch } from 'react-redux';
 import axios from 'axios';
 import socket from '@/config/socket.io'
 import { setUserInfo } from '@/redux/slices/userInfo';
-import ChatList from '@/Components/chatboxComponents/chatsList/ChatsList';
-import Chats from '@/Components/chatboxComponents/chats/Chats';
+import ChatList from '@/Components/chatboxComponents/Allchats/Searchuser';
 import {useRouter} from 'next/router';
 import { setRequests } from '@/redux/slices/chats';
+import Chat from '@/Components/chatboxComponents/chat/Chat';
 interface profileTypes{
     email:String,
     name:String,
@@ -22,6 +22,7 @@ export default function chatbox() {
   const requests=useSelector((state:any)=>state.chats.requestList);
   const dispatch=useDispatch();
   const route=useRouter();
+  const chatSelected=useSelector((state:any)=>state.chats.activeChat);    
   const getUserInfo=async()=>{
     try{
       let res=await axios.get("http://localhost:4000/auth/check-logged-in",{withCredentials:true});
@@ -35,16 +36,13 @@ export default function chatbox() {
   }
 
   const socketIo=()=>{
-    if(userData.email.length>0 || userData.profileUrl.length>0){
+    if(userData.email.length>0 || userData.profileUrl.length>0){      
       socket.connect();
       socket.emit("userConnected",userData.email,(response:any)=>{
         if(response.status===200){
           dispatch(setRequests(response.requests))
         }
       });
-      socket.on("connect",()=>{
-        console.log("server created Successfully");
-      })
       socket.on("auth_Error",arg=>{
         console.log(arg);
       });
@@ -52,7 +50,7 @@ export default function chatbox() {
     }
   }
   useEffect(()=>{
-    if(userData.email.length==0 || userData.profileUrl.length==0 || userData.profileUrl.length==0)
+    if(userData.email.length==0 || userData?.name?.length==0)
     {
       getUserInfo();
     }
@@ -60,12 +58,13 @@ export default function chatbox() {
   
   useEffect(()=>{
     socketIo();
-  },[userData.email])
+  }
+  ,[userData])  
   useEffect(()=>{
-    socket.on("newFriendRequest",(userInfo,callback)=>{
+    socket.on("newFriendRequest",(userInfo)=>{      
       if(userInfo.email.length>0)
-      {
-        let data=[...requests,userInfo]
+      { 
+        let data=[...requests,userInfo]        
         dispatch(setRequests(data));
       }
     })
@@ -75,7 +74,7 @@ export default function chatbox() {
     <div className={styles.chatbox}>
       <LeftSidebar userData={userData}/>
       <ChatList/>
-      <Chats/>
+      {chatSelected.email?.length>0?<Chat email={userData.email} name={userData.name}/>:<></>}
     </div>
     </>
   )

@@ -1,0 +1,23 @@
+@import '../../../styles/global.scss';
+.pinned_Messages{
+    .head{
+        align-items: center;
+        display:flex;
+        padding: 0;
+        margin: 0;
+        font-family: $fontRoboto;
+        color: gainsboro;
+        gap:0.5rem;
+        font-size: small;
+        font-weight: 500;
+    }
+    .pinned_item_list{
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display:flex;
+        flex-direction: column;
+        max-height: 40vw;
+        gap:0.2rem;
+    }
+}

@@ -19,7 +19,7 @@ export default function Requests({state,dispatch}:propsType) {
         <hr />
         <h4 className={styles.requests_heading}>Requests</h4>
         {
-          requests?.map(({name,email,profileUrl}:initailState,count:number)=><FriendRequestCard key={count} type={"accept_decline"} name={name} email={email} profileUrl={profileUrl} found={-1} dispatch={dispatch} state={state}/> )
+          requests?.map(({name,email,profileUrl}:initailState,count:number)=><FriendRequestCard id={count} key={count} buttonType={"response"} name={name} email={email} profileUrl={profileUrl} dispatch={dispatch} state={state}/> )
         }
       </ol>
     </>

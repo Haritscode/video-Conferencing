@@ -1,6 +1,7 @@
+const db=require("../../config/db/config")
 require("dotenv").config;
 const jwt=require("jsonwebtoken")
-const verifyHandshake=(atoken,rtoken,next)=>{
+const verifyHandshake=(atoken,rtoken,socket,next)=>{
     try{
         if(atoken.length>0 && rtoken.length>0)
         {
@@ -9,8 +10,9 @@ const verifyHandshake=(atoken,rtoken,next)=>{
                     return next(new Error("Internal Server Error"))
                 }
                 else{
-                    next();
-                }
+                        socket.userData=decoded.id;
+                        next();
+                    }
             })
         }
         else if(atoken.length==0 && rtoken.length>0){
@@ -33,7 +35,7 @@ const verifyHandshake=(atoken,rtoken,next)=>{
         }
     }
     catch(err){
-        console.log(err);
+        console.log({err});
     }
 }
 module.exports=verifyHandshake;

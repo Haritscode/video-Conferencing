@@ -2,7 +2,7 @@
 @import '../chatboxGlobal.scss';
 
 .chat {
-    width: 100%;
+    width: 70vw;
     height: 100vh;
     background-color: white;
     overflow: hidden;
@@ -46,24 +46,6 @@
                     display: flex;
                     align-items: center;
                     position: relative;
-
-                    .user_typing {
-                        color: green;
-                        font-family: $fontInter;
-                        font-weight: 100;
-                        position: absolute;
-                        top: 40px;
-                        transition-duration: 1s;
-                    }
-
-                    .last_seen {
-                        font-size: medium;
-                        position: absolute;
-                        top: 40px;
-                        transition-duration: 1s;
-                        font-weight: 500;
-                        color: rgb(155, 152, 152);
-                    }
                 }
             }
         }
@@ -111,10 +93,15 @@
         }
     }
     .chat_section{
-        height:85%;
-        width:100%;
+        height:75%;
         overflow: scroll;
         background-color: rgba(0, 183, 255, 0.055);
+        padding:3rem 2rem;
+        padding-bottom: 0;
+        position: relative;
+        display:flex;
+        flex-direction: column;
+        gap:2rem;
         &::-webkit-scrollbar {
             display: none;
         }

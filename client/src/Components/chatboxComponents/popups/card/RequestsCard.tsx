@@ -3,31 +3,42 @@ import styles from './RequestsCard.module.scss';
 import Image from 'next/image';
 import image from '@/assets/male-models-testing.webp';
 import socket from '@/config/socket.io';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import RequestButton from '../../buttons/newrequests/RequestButton';
+import { setActiveChat, setRequests } from '@/redux/slices/chats';
 interface propsData{
   email:String,
   name:String,
   profileUrl:String,
   buttonType:String,
-  type:String,
   dispatch:Function,
-  state:any
+  state:any,
+  id:number
 }
-export default function SendRequestCard({email,name,profileUrl,buttonType,type,dispatch,state}:propsData) {
+export default function SendRequestCard({email,name,profileUrl,buttonType,dispatch,state,id}:propsData) {
   const userInfo=useSelector((state:any)=>state.userProfile)
-  const acceptButton=()=>{
-    socket.emit("accept",email,(response:any)=>{
-      console.log(response);
+  const requests=useSelector((state:any)=>state.chats.requestList);
+  const dispatcher=useDispatch(); 
+  const requestButton=(value:String)=>{
+    socket.emit("acceptRequest",userInfo.email,email,value,(response:{status:number})=>{      
+      if(buttonType==="response" && response.status===200){
+        let updateRequests=requests.filter((item:any,count:number)=>count!==id);
+        dispatcher(setRequests(updateRequests))        
+      }
     })
   }
-  const sendRequestButton=()=>{
+  const sendRequestButton=()=>{    
     socket.emit("sendRequest",userInfo.email,email,(response:any)=>{
       if(response.status==201){
-        console.log(response.msg);
         dispatch({type:"INVITEDUSERINFO",payload:{...state.invitedUserInfo,type:response.msg}})
       }
     })
+  };
+  socket.on("requestUpdate",(msg)=>{
+    dispatch({type:"INVITEDUSERINFO",payload:{...state.invitedUserInfo,type:msg}})
+  })
+  const startChat=()=>{
+    dispatcher(setActiveChat({email}))    
   }  
   return (
     <>
@@ -41,12 +52,12 @@ export default function SendRequestCard({email,name,profileUrl,buttonType,type,d
       </div>
       <div className={styles.accept_decline_btns}>
         {
-          buttonType==="new search"?
+          buttonType==="new"?
           <RequestButton text={"Connect"} backgroundColor={"black"} color="white" onClick={sendRequestButton}/>:
           buttonType=="request already sended"?
-          <RequestButton text={"requested"} backgroundColor={"white"} color="black" onClick={sendRequestButton}/>:
-          <><RequestButton text={"Accept"} backgroundColor={"black"} color="white" onClick={()=>{}}/>
-          <RequestButton text={"Decline"} backgroundColor={"white"} color="black" onClick={()=>{}}/></>}
+          <RequestButton text={"requested"} backgroundColor={"white"} color="black" onClick={()=>{}}/>:
+          buttonType==="connected"?<RequestButton text={"Chat Now"} backgroundColor={"black"} color="white" onClick={()=>startChat()}/>:<><RequestButton text={"Accept"} backgroundColor={"black"} color="white" onClick={()=>requestButton('accepted')}/>
+          <RequestButton text={"Decline"} backgroundColor={"white"} color="black" onClick={()=>requestButton('decline')}/></>}
       </div>
     </li>
     </>
