@@ -44,7 +44,7 @@ const socketio = (server) => {
     connectionStatus(socket)
     socket.on("userConnected",(email,callback)=>{
       const socketId=socket.id;
-      redis.set(email,socketId)
+      redis.set(email,socketId);
       userConnected(email,callback);
     })
     socket.on("sendRequest",(sendBy,sendTo,callback)=>{
@@ -61,6 +61,7 @@ const socketio = (server) => {
       messageSent(sendBy,sendTo,message,callback,socket);
     })
     socket.on("disconnect",()=>{
+      console.log("disconnected user Id", socket.id);
       removeUserFromRedis(socket.id);
     })
   });

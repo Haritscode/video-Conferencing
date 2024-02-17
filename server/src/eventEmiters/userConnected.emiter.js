@@ -1,5 +1,5 @@
 const db=require("../../config/db/config")
-const userConnected=async(email,callback,socket)=>{
+const userConnected=async(email,callback)=>{
     db.query(`select uid from user where email="${email}"`,(err,result)=>{
         if(err){
             callback({status:500,msg:"Internal Server Error"});

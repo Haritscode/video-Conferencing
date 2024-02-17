@@ -50,12 +50,13 @@ export default function Chat({email,name}:{email:String,name:String}) {
         setIsOnline(false);
       }
     }    
+    
     useEffect(()=>{
-      // for new messages update or to fetch chats data
       socket.on("chatStatus",(status)=>{
+        console.log("status-->", status);
         setIsOnline(status);
       })
-      
+      // for new messages update or to fetch chats data
       socket.on("ReceivedMessage",receiveMessage);
       return ()=>{
         socket.off("ReceivedMessage",receiveMessage);

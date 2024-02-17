@@ -10,7 +10,7 @@ const findUser=(req,res,next)=>{
             }
             else if(result.length>0){
                 const userId=result[0].uid;
-                db.query(`select uid,email,name,profileUrl from user where email="${find}"`,(err,userInfo)=>{
+                db.query(`select uid,email,name,profileUrl from user where email like "${find}%"`,(err,userInfo)=>{
                     if(err){
                         next(new ErrorHandler())
                     }

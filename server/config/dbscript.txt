@@ -1,8 +1,8 @@
-create table user(uid varchar(500) primary key,name varchar(100) not null,email varchar(100) not null,password varchar(100) not null,profileUrl varchar(1000) unique, createdAt datetime default current_timestamp)
+create table user(uid varchar(100),name varchar(60) not null,email varchar(60) not null,password varchar(60) not null,profileUrl varchar(500) unique, createdAt datetime default current_timestamp,primary key (uid));
 
-create table otp(email varchar(100) unique,otp mediumint unique,createdAt datetime default current_timestamp)
+create table otp(email varchar(60) unique,otp mediumint unique,createdAt datetime default current_timestamp);
 
-create table groupInfo(groupId varchar(50) primary key,createdBy varchar(50) not null,createdAt datetime DEFAULT current_timestamp not null,isActive BOOLEAN not null,lastActive datetime DEFAULT current_timestamp,groupType ENUM("one-on-one","group","community") default "one-on-one" not null, foreign key groupId references user(uid))
+create table groupInfo(groupId varchar(100) primary key,createdBy varchar(50) not null,createdAt datetime DEFAULT current_timestamp not null,isActive BOOLEAN not null,lastActive datetime DEFAULT current_timestamp,groupType ENUM("one-on-one","group","community") default "one-on-one" not null, foreign key (groupId) references user(uid));
 
 create table connections(id INT auto_increment primary key,senderId varchar(100) not null,receiverId varchar(100) not null,status ENUM('requested','accepted','decline') default 'requested',createdAt datetime default current_timestamp, foreign key (senderId) references user(uid), foreign key (receiverId) references user(uid),unique key unique_users_pair(senderId,receiverId));
 

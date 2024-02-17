@@ -13,8 +13,7 @@ interface propsType{
 export default function NewChat({showPopup,setShowPopup}:propsType) {  
   const [state,dispatch]=useReducer(chatReducer,intialState);
   const userInfo=useSelector((state:any)=>state.userProfile);  
-  const onKeyDown=async(e:any)=>{
-    if(e.key==="Enter"){            
+  const onKeyDown=async(e:any)=>{            
       try{
           const result=await axios.get(`http://localhost:4000/chats/findUser?find=${state.searchUser}`,{withCredentials:true});
           dispatch({type:"INVITEDUSERINFO",payload:{...result.data}})
@@ -24,7 +23,6 @@ export default function NewChat({showPopup,setShowPopup}:propsType) {
         console.log(err);
         dispatch({type:"INVITEDUSERINFO",payload:{}})
       }
-    }
   }
   console.log();
   
