@@ -19,7 +19,7 @@ const setHeaders = require("./src/middlewares/setHeaders.middleware");
 const socketio = require("./config/socker.io/socketio.config");
 app.use(
   cors({
-    origin: ["http://localhost:3000","http://192.168.154.27:3000"],
+    origin: ["http://localhost:3000","http://192.168.1.105:3000"],
     methods: ["GET", "PUT", "POST", "DELETE"],
     credentials:true,
   })

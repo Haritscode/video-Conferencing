@@ -53,6 +53,7 @@ const newUserVerification = (req, res) => {
       `SELECT * FROM user where email="${email}"`,
       (err, result) => {
         if (err) {
+          console.log("err1 --->", err)
           next(new ErrorHandler())
         } else {
           if (result.length>0) {
@@ -62,6 +63,7 @@ const newUserVerification = (req, res) => {
               `SELECT * FROM otp where email="${email}"`,
               async (err, result) => {
                 if (err) {
+                  console.log("err2--->", err)
                   next(new ErrorHandler())
                 } else {
                   if (result[0]) {
@@ -95,6 +97,7 @@ const newUserVerification = (req, res) => {
       }
     );
   } catch (err) {
+    console.log("err3--->", err);
     next(new ErrorHandler())
   }
 };

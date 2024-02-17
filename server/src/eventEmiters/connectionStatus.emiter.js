@@ -19,7 +19,7 @@ const connectionStatus=(socket)=>{
                     users.push(item);
                 }
             })
-            console.log({users});
+            console.log(true)
             socket.to(users).emit("chatStatus",{status:true})
         }
     })
